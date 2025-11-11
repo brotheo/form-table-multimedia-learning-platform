@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Learning Platform - Tables, Forms & Multimedia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            padding: 10px 20px;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        nav button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        nav button.active {
+            background: #764ba2;
+            box-shadow: 0 4px 10px rgba(118, 75, 162, 0.3);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .lesson {
+            margin-bottom: 40px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .lesson-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .lesson-header h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .lesson-header p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .editor-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 300px;
+        }
+
+        .editor-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-header {
+            background: #2d3748;
+            color: white;
+            padding: 10px 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .editor-panel textarea {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 250px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            line-height: 1.5;
+        }
+
+        .preview-panel {
+            background: white;
+            border-left: 2px solid #e9ecef;
+        }
+
+        .preview-content {
+            padding: 20px;
+            min-height: 250px;
+            overflow: auto;
+        }
+
+        .run-button {
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+
+        .run-button:hover {
+            background: #38a169;
+        }
+
+        .info-box {
+            background: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        .info-box h4 {
+            color: #38b2ac;
+            margin-bottom: 10px;
+        }
+
+        .info-box ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .tip-box {
+            background: #fef5e7;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        .tip-box strong {
+            color: #f39c12;
+        }
+
+        @media (max-width: 768px) {
+            .editor-container {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-panel {
+                border-left: none;
+                border-top: 2px solid #e9ecef;
+            }
+        }
+
+        code {
+            background: #f1f3f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 HTML Learning Platform</h1>
+            <p>Master Tables, Forms & Multimedia with Interactive Examples</p>
+        </header>
+
+        <nav>
+            <button class="nav-btn active" data-section="tables">📊 Tables</button>
+            <button class="nav-btn" data-section="forms">📝 Forms</button>
+            <button class="nav-btn" data-section="multimedia">🎬 Multimedia</button>
+        </nav>
+
+        <div class="content">
+            <!-- TABLES SECTION -->
+            <div class="section active" id="tables">
+                <div class="info-box">
+                    <h4>📖 What are HTML Tables?</h4>
+                    <p>Tables are used to organize data in rows and columns. They're perfect for displaying schedules, scores, statistics, and more!</p>
+                    <ul>
+                        <li><code>&lt;table&gt;</code> - Creates the table</li>
+                        <li><code>&lt;tr&gt;</code> - Table Row</li>
+                        <li><code>&lt;th&gt;</code> - Table Header (bold & centered)</li>
+                        <li><code>&lt;td&gt;</code> - Table Data (regular cell)</li>
+                    </ul>
+                </div>
+
+                <!-- Example 1: Basic Table -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Example 1: Basic Table</h3>
+                        <p>Let's create a simple class schedule table. Try editing the code and click "Run Code" to see changes!</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(1)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor1"><!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #667eea;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+</style>
+</head>
+<body>
+
+<h2>My Class Schedule</h2>
+<table>
+    <tr>
+        <th>Time</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+    </tr>
+    <tr>
+        <td>9:00 AM</td>
+        <td>Math</td>
+        <td>Science</td>
+    </tr>
+    <tr>
+        <td>10:00 AM</td>
+        <td>English</td>
+        <td>History</td>
+    </tr>
+</table>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview1"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 2: Advanced Table -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Example 2: Table with Colspan & Rowspan</h3>
+                        <p>Learn how to merge cells using <code>colspan</code> (merge columns) and <code>rowspan</code> (merge rows).</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(2)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor2"><!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+th, td {
+    border: 2px solid #764ba2;
+    padding: 15px;
+    text-align: center;
+}
+th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-size: 1.1em;
+}
+</style>
+</head>
+<body>
+
+<h2>Student Scores</h2>
+<table>
+    <tr>
+        <th rowspan="2">Student</th>
+        <th colspan="2">Subjects</th>
+    </tr>
+    <tr>
+        <th>Math</th>
+        <th>Science</th>
+    </tr>
+    <tr>
+        <td>Alice</td>
+        <td>95</td>
+        <td>88</td>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>87</td>
+        <td>92</td>
+    </tr>
+</table>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Challenge:</strong> Try adding more days to the schedule, or add more students to the scores table!
+                </div>
+            </div>
+
+            <!-- FORMS SECTION -->
+            <div class="section" id="forms">
+                <div class="info-box">
+                    <h4>📖 What are HTML Forms?</h4>
+                    <p>Forms collect user input like login info, surveys, and contact details. They're essential for interactive websites!</p>
+                    <ul>
+                        <li><code>&lt;form&gt;</code> - Container for form elements</li>
+                        <li><code>&lt;input&gt;</code> - Text fields, checkboxes, radio buttons</li>
+                        <li><code>&lt;textarea&gt;</code> - Multi-line text input</li>
+                        <li><code>&lt;select&gt;</code> - Dropdown menu</li>
+                        <li><code>&lt;button&gt;</code> - Submit or action button</li>
+                    </ul>
+                </div>
+
+                <!-- Example 3: Basic Form -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Example 3: Registration Form</h3>
+                        <p>Create a simple registration form with different input types.</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(3)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor3"><!DOCTYPE html>
+<html>
+<head>
+<style>
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #667eea;
+    outline: none;
+}
+button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+button:hover {
+    background: #764ba2;
+}
+</style>
+</head>
+<body>
+
+<form>
+    <h2>Sign Up</h2>
+    
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" placeholder="Enter username">
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="your@email.com">
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="Enter password">
+    
+    <button type="submit">Register</button>
+</form>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 4: Advanced Form -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Example 4: Survey Form with Various Inputs</h3>
+                        <p>Explore checkboxes, radio buttons, dropdowns, and text areas.</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(4)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor4"><!DOCTYPE html>
+<html>
+<head>
+<style>
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    border-radius: 15px;
+}
+h2 { color: #333; }
+.form-group {
+    margin: 20px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+}
+label { 
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 8px;
+}
+select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+button {
+    width: 100%;
+    padding: 15px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<form>
+    <h2>🎯 Student Survey</h2>
+    
+    <div class="form-group">
+        <label>What's your grade level?</label>
+        <select>
+            <option>Choose...</option>
+            <option>9th Grade</option>
+            <option>10th Grade</option>
+            <option>11th Grade</option>
+            <option>12th Grade</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label>Favorite subjects: (check all that apply)</label>
+        <input type="checkbox" name="subject" value="math"> Math<br>
+        <input type="checkbox" name="subject" value="science"> Science<br>
+        <input type="checkbox" name="subject" value="english"> English<br>
+        <input type="checkbox" name="subject" value="art"> Art
+    </div>
+    
+    <div class="form-group">
+        <label>Do you enjoy coding?</label>
+        <input type="radio" name="enjoy" value="yes"> Yes<br>
+        <input type="radio" name="enjoy" value="no"> No<br>
+        <input type="radio" name="enjoy" value="maybe"> Maybe
+    </div>
+    
+    <div class="form-group">
+        <label>Additional comments:</label>
+        <textarea placeholder="Tell us your thoughts..."></textarea>
+    </div>
+    
+    <button type="submit">Submit Survey</button>
+</form>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview4"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Challenge:</strong> Add more form fields like date picker, color picker, or range slider!
+                </div>
+            </div>
+
+            <!-- MULTIMEDIA SECTION -->
+            <div class="section" id="multimedia">
+                <div class="info-box">
+                    <h4>📖 What is Multimedia in HTML?</h4>
+                    <p>Multimedia makes websites engaging with images, videos, and audio. Make your pages come alive!</p>
+                    <ul>
+                        <li><code>&lt;img&gt;</code> - Display images</li>
+                        <li><code>&lt;video&gt;</code> - Embed videos with controls</li>
+                        <li><code>&lt;audio&gt;</code> - Add sound and music</li>
+                        <li><code>&lt;iframe&gt;</code> - Embed external content (YouTube, maps)</li>
+                    </ul>
+                </div>
+
+                <!-- Example 5: Images -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Example 5: Working with Images</h3>
+                        <p>Learn to add and style images on your webpage.</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(5)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor5"><!DOCTYPE html>
+<html>
+<head>
+<style>
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+.image-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+.image-card:hover {
+    transform: translateY(-5px);
+}
+.image-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.image-card h3 {
+    padding: 15px;
+    color: #667eea;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align: center;">Image Gallery</h2>
+<div class="gallery">
+    <div class="image-card">
+        <img src="https://picsum.photos/300/200?random=1" alt="Nature">
+        <h3>Beautiful Nature</h3>
+    </div>
+    <div class="image-card">
+        <img src="https://picsum.photos/300/200?random=2" alt="City">
+        <h3>City Lights</h3>
+    </div>
+    <div class="image-card">
+        <img src="https://picsum.photos/300/200?random=3" alt="Ocean">
+        <h3>Ocean View</h3>
+    </div>
+    <div class="image-card">
+        <img src="https://picsum.photos/300/200?random=4" alt="Mountains">
+        <h3>Mountains</h3>
+    </div>
+</div>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview5"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 6: Video & Audio -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Example 6: Video and Audio Elements</h3>
+                        <p>Add videos and audio with custom controls and styling.</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(6)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor6"><!DOCTYPE html>
+<html>
+<head>
+<style>
+.media-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+.media-box {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+}
+video, audio {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.info {
+    background: #e6fffa;
+    padding: 10px;
+    border-left: 4px solid #38b2ac;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+</style>
+</head>
+<body>
+
+<div class="media-container">
+    <div class="media-box">
+        <h3>🎬 Video Player</h3>
+        <video controls poster="https://picsum.photos/800/450">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser doesn't support video.
+        </video>
+        <div class="info">
+            <strong>Controls:</strong> play, pause, volume, and fullscreen
+        </div>
+    </div>
+    
+    <div class="media-box">
+        <h3>🎵 Audio Player</h3>
+        <audio controls>
+            <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+            Your browser doesn't support audio.
+        </audio>
+        <div class="info">
+            <strong>Features:</strong> Play/pause and volume control
+        </div>
+    </div>
+    
+    <div class="media-box">
+        <h3>📺 YouTube Video (iframe)</h3>
+        <iframe width="100%" height="315" 
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope" 
+            allowfullscreen
+            style="border-radius: 8px;">
+        </iframe>
+        <div class="info">
+            <strong>Note:</strong> iframes embed external content
+        </div>
+    </div>
+</div>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview6"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Challenge:</strong> Try adding the <code>autoplay</code>, <code>loop</code>, or <code>muted</code> attributes to videos!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const sections = document.querySelectorAll('.section');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-section');
+                
+                // Remove active class from all buttons and sections
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding section
+                button.classList.add('active');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+
+        // Run code function
+        function runCode(exampleNum) {
+            const editor = document.getElementById('editor' + exampleNum);
+            const preview = document.getElementById('preview' + exampleNum);
+            const code = editor.value;
+            
+            // Create iframe to safely render the code
+            const iframe = document.createElement('iframe');
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            
+            // Clear previous content
+            preview.innerHTML = '';
+            preview.appendChild(iframe);
+            
+            // Write code to iframe
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            iframeDoc.open();
+            iframeDoc.write(code);
+            iframeDoc.close();
+            
+            // Adjust iframe height based on content
+            setTimeout(() => {
+                try {
+                    const body = iframeDoc.body;
+                    const html = iframeDoc.documentElement;
+                    const height = Math.max(
+                        body.scrollHeight,
+                        body.offsetHeight,
+                        html.clientHeight,
+                        html.scrollHeight,
+                        html.offsetHeight
+                    );
+                    iframe.style.height = Math.max(height, 250) + 'px';
+                } catch (e) {
+                    iframe.style.height = '400px';
+                }
+            }, 100);
+        }
+
+        // Run all examples on page load
+        window.addEventListener('load', () => {
+            for (let i = 1; i <= 6; i++) {
+                runCode(i);
+            }
+        });
+    </script>
+</body>
+</html>
