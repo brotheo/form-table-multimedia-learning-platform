@@ -238,6 +238,9 @@
             <button class="nav-btn active" data-section="tables">📊 Tables</button>
             <button class="nav-btn" data-section="forms">📝 Forms</button>
             <button class="nav-btn" data-section="multimedia">🎬 Multimedia</button>
+            <button class="nav-btn" data-section="flexbox">📐 Flexbox</button>
+            <button class="nav-btn" data-section="grid">🔲 CSS Grid</button>
+            <button class="nav-btn" data-section="project">Project 2</button>
         </nav>
 
         <div class="content">
@@ -811,6 +814,1607 @@ video, audio {
                     <strong>💡 Challenge:</strong> Try adding the <code>autoplay</code>, <code>loop</code>, or <code>muted</code> attributes to videos!
                 </div>
             </div>
+
+            <!-- FLEXBOX SECTION -->
+            <div class="section" id="flexbox">
+                <div class="info-box">
+                    <h4>📖 What is CSS Flexbox?</h4>
+                    <p>Flexbox is a powerful layout tool that helps you align and distribute items in a container, even when their size is unknown. Perfect for responsive designs!</p>
+                    <ul>
+                        <li><code>display: flex</code> - Creates a flex container</li>
+                        <li><code>justify-content</code> - Aligns items horizontally (main axis)</li>
+                        <li><code>align-items</code> - Aligns items vertically (cross axis)</li>
+                        <li><code>flex-direction</code> - Sets direction (row, column)</li>
+                        <li><code>flex-wrap</code> - Allows items to wrap to next line</li>
+                        <li><code>gap</code> - Adds space between flex items</li>
+                    </ul>
+                </div>
+
+                <!-- Example 7: Basic Flexbox -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Example 7: Flexbox Basics - Navigation Bar</h3>
+                        <p>Learn how to create a responsive navigation bar using Flexbox alignment properties.</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(7)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor7"><!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Flexbox Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 15px 30px;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Flexbox Card Container */
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    min-width: 150px;
+}
+
+.card h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">MyWebsite</div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="card-container">
+    <div class="card">
+        <h3>🎨 Design</h3>
+        <p>Beautiful layouts</p>
+    </div>
+    <div class="card">
+        <h3>💻 Code</h3>
+        <p>Clean & efficient</p>
+    </div>
+    <div class="card">
+        <h3>🚀 Deploy</h3>
+        <p>Fast & reliable</p>
+    </div>
+</div>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview7"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 8: Responsive Image Gallery -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Example 8: Responsive Image Gallery with Flexbox</h3>
+                        <p>Build a professional image gallery that adapts to different screen sizes using Flexbox.</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(8)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor8"><!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f0f2f5;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Flexbox Gallery */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    flex: 1 1 250px; /* grow, shrink, base width */
+    max-width: 300px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-info {
+    padding: 15px;
+}
+
+.gallery-info h3 {
+    margin: 0 0 10px 0;
+    color: #667eea;
+    font-size: 1.2em;
+}
+
+.gallery-info p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .gallery-item {
+        flex: 1 1 100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<h2>📸 My Photo Gallery</h2>
+
+<div class="gallery">
+    <div class="gallery-item">
+        <img src="https://picsum.photos/300/200?random=10" alt="Photo 1">
+        <div class="gallery-info">
+            <h3>Sunset Beach</h3>
+            <p>Golden hour at the coast</p>
+        </div>
+    </div>
+    
+    <div class="gallery-item">
+        <img src="https://picsum.photos/300/200?random=11" alt="Photo 2">
+        <div class="gallery-info">
+            <h3>Mountain Peak</h3>
+            <p>Adventure awaits above</p>
+        </div>
+    </div>
+    
+    <div class="gallery-item">
+        <img src="https://picsum.photos/300/200?random=12" alt="Photo 3">
+        <div class="gallery-info">
+            <h3>City Lights</h3>
+            <p>Urban nightscape</p>
+        </div>
+    </div>
+    
+    <div class="gallery-item">
+        <img src="https://picsum.photos/300/200?random=13" alt="Photo 4">
+        <div class="gallery-info">
+            <h3>Forest Path</h3>
+            <p>Nature's serenity</p>
+        </div>
+    </div>
+    
+    <div class="gallery-item">
+        <img src="https://picsum.photos/300/200?random=14" alt="Photo 5">
+        <div class="gallery-info">
+            <h3>Ocean Wave</h3>
+            <p>Power of the sea</p>
+        </div>
+    </div>
+    
+    <div class="gallery-item">
+        <img src="https://picsum.photos/300/200?random=15" alt="Photo 6">
+        <div class="gallery-info">
+            <h3>Desert Dunes</h3>
+            <p>Endless sand waves</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview8"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Challenge:</strong> Try changing <code>justify-content</code> to space-around, space-evenly, or flex-end. Experiment with <code>align-items</code> values!
+                </div>
+            </div>
+
+            <!-- CSS GRID SECTION -->
+            <div class="section" id="grid">
+                <div class="info-box">
+                    <h4>📖 What is CSS Grid?</h4>
+                    <p>CSS Grid is a powerful two-dimensional layout system that lets you create complex web layouts with rows and columns. Unlike Flexbox (which is one-dimensional), Grid works on both axes simultaneously, making it perfect for organizing entire page structures!</p>
+                    <ul>
+                        <li><code>display: grid</code> - Creates a grid container</li>
+                        <li><code>grid-template-columns</code> - Defines column sizes (e.g., <code>1fr 2fr 1fr</code>)</li>
+                        <li><code>grid-template-rows</code> - Defines row sizes</li>
+                        <li><code>gap</code> - Space between grid items (replaces grid-gap)</li>
+                        <li><code>grid-column</code> - Makes an item span multiple columns</li>
+                        <li><code>grid-row</code> - Makes an item span multiple rows</li>
+                        <li><code>grid-template-areas</code> - Creates named grid areas for semantic layouts</li>
+                        <li><code>repeat()</code> - Repeats pattern (e.g., <code>repeat(3, 1fr)</code> = three equal columns)</li>
+                        <li><code>minmax()</code> - Sets min and max size (e.g., <code>minmax(200px, 1fr)</code>)</li>
+                    </ul>
+                </div>
+
+                <!-- Example 9: Basic Grid -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Example 9: CSS Grid Basics - Student Dashboard</h3>
+                        <p>Learn how to create a responsive dashboard using <code>grid-template-columns</code>, <code>repeat()</code>, and <code>grid-column: span</code>.</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(9)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor9"><!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    padding: 20px;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f3e7ff 100%);
+    min-height: 100vh;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+/* 🎯 GRID CONTAINER - Main Dashboard */
+.dashboard {
+    display: grid;
+    /* repeat(3, 1fr) = 3 equal columns */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* space between all grid items */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 📦 GRID ITEMS - Widgets */
+.widget {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid transparent;
+}
+
+.widget:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+}
+
+.widget h3 {
+    margin: 0 0 15px 0;
+    color: #2d3748;
+    font-size: 1.1em;
+}
+
+.widget-value {
+    font-size: 3em;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 15px 0;
+}
+
+.widget-label {
+    color: #718096;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 🌟 SPANNING COLUMNS - Large Widget */
+.widget-large {
+    /* This widget spans 2 columns! */
+    grid-column: span 2;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: left;
+}
+
+.widget-large:hover {
+    border-color: #764ba2;
+}
+
+.widget-large h3 {
+    color: white;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+
+.goals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.goal-item {
+    background: rgba(255,255,255,0.1);
+    padding: 12px 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    transition: background 0.3s;
+}
+
+.goal-item:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.goal-item.completed {
+    opacity: 0.7;
+    text-decoration: line-through;
+}
+
+/* 🎨 Icon Styling */
+.icon {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 📱 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .dashboard {
+        /* Stack in single column on mobile */
+        grid-template-columns: 1fr;
+    }
+    .widget-large {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .widget-value {
+        font-size: 2.5em;
+    }
+}
+</style>
+</head>
+<body>
+
+<h2>📊 Student Dashboard</h2>
+
+<div class="dashboard">
+    <!-- Small Widget 1 -->
+    <div class="widget">
+        <div class="icon">📚</div>
+        <h3>Courses</h3>
+        <div class="widget-value">6</div>
+        <div class="widget-label">Active Courses</div>
+    </div>
+    
+    <!-- Small Widget 2 -->
+    <div class="widget">
+        <div class="icon">✅</div>
+        <h3>Assignments</h3>
+        <div class="widget-value">12</div>
+        <div class="widget-label">Completed</div>
+    </div>
+    
+    <!-- Small Widget 3 -->
+    <div class="widget">
+        <div class="icon">⭐</div>
+        <h3>Grade</h3>
+        <div class="widget-value">A+</div>
+        <div class="widget-label">Average</div>
+    </div>
+    
+    <!-- Large Widget (spans 2 columns!) -->
+    <div class="widget widget-large">
+        <h3>🎯 This Week's Goals</h3>
+        <div class="goals-list">
+            <div class="goal-item completed">✓ Complete Math homework</div>
+            <div class="goal-item completed">✓ Study for Science test</div>
+            <div class="goal-item">○ Finish History project</div>
+            <div class="goal-item">○ Review English essay</div>
+        </div>
+    </div>
+    
+    <!-- Small Widget 4 -->
+    <div class="widget">
+        <div class="icon">🏆</div>
+        <h3>Achievements</h3>
+        <div class="widget-value">8</div>
+        <div class="widget-label">Badges Earned</div>
+    </div>
+</div>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview9"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 10: Homepage Layout -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Example 10: Professional Homepage with Grid Template Areas</h3>
+                        <p>Build a complete responsive homepage using <code>grid-template-areas</code> for semantic layout structure. This is how real websites are built!</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(10)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor10"><!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* 🎯 MAIN GRID LAYOUT - Page Structure */
+.page-container {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: auto 1fr auto;
+    /* Named grid areas for semantic layout */
+    grid-template-areas:
+        "header header"   /* Header spans both columns */
+        "sidebar main"    /* Sidebar and main side by side */
+        "footer footer";  /* Footer spans both columns */
+    min-height: 100vh;
+}
+
+/* 🎨 HEADER - Placed in 'header' area */
+.header {
+    grid-area: header; /* This goes in the 'header' area */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header h1 {
+    font-size: 1.8em;
+    letter-spacing: 1px;
+}
+
+.header nav {
+    display: flex;
+    gap: 10px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.header nav a:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+/* 📋 SIDEBAR - Placed in 'sidebar' area */
+.sidebar {
+    grid-area: sidebar; /* This goes in the 'sidebar' area */
+    background: #2d3748;
+    color: white;
+    padding: 30px 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    padding: 15px 15px;
+    margin: 8px 0;
+    background: #1a202c;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.sidebar li:hover {
+    background: #4a5568;
+    border-left-color: #667eea;
+    transform: translateX(5px);
+}
+
+.sidebar li.active {
+    background: #667eea;
+    border-left-color: white;
+}
+
+/* 📄 MAIN CONTENT - Placed in 'main' area */
+.main-content {
+    grid-area: main; /* This goes in the 'main' area */
+    padding: 40px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+}
+
+.welcome-section {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.welcome-section h2 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+.welcome-section p {
+    color: #4a5568;
+    line-height: 1.8;
+    font-size: 1.1em;
+}
+
+/* 🎯 NESTED GRID - Content Cards */
+.content-grid {
+    display: grid;
+    /* auto-fit: automatically fit as many columns as possible */
+    /* minmax(280px, 1fr): minimum 280px, maximum equal width */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+    border-top: 4px solid #667eea;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+}
+
+.card-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.card p {
+    color: #718096;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.card-link {
+    display: inline-block;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.card-link:hover {
+    color: #764ba2;
+}
+
+/* 👣 FOOTER - Placed in 'footer' area */
+.footer {
+    grid-area: footer; /* This goes in the 'footer' area */
+    background: #2d3748;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer p {
+    margin: 5px 0;
+    opacity: 0.8;
+}
+
+/* 📱 RESPONSIVE DESIGN */
+@media (max-width: 992px) {
+    .page-container {
+        grid-template-columns: 180px 1fr;
+    }
+    
+    .sidebar {
+        padding: 20px 10px;
+    }
+    
+    .sidebar li {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-container {
+        /* Reorganize layout for mobile */
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main"
+            "sidebar"
+            "footer";
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .sidebar {
+        padding: 20px;
+    }
+    
+    .sidebar ul {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+    }
+    
+    .sidebar li {
+        white-space: nowrap;
+    }
+    
+    .main-content {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="page-container">
+    <!-- Header Area -->
+    <header class="header">
+        <h1>🌟 MyWebsite</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    
+    <!-- Sidebar Area -->
+    <aside class="sidebar">
+        <h3>📋 Navigation</h3>
+        <ul>
+            <li class="active">🏠 Dashboard</li>
+            <li>📊 Analytics</li>
+            <li>📝 Projects</li>
+            <li>👥 Team</li>
+            <li>💬 Messages</li>
+            <li>⚙️ Settings</li>
+        </ul>
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <div class="welcome-section">
+            <h2>Welcome to Your Homepage! 👋</h2>
+            <p>This professional homepage is built entirely with CSS Grid using <strong>grid-template-areas</strong>. Notice how the layout automatically adapts to different screen sizes. Try resizing your browser!</p>
+        </div>
+        
+        <!-- Nested Grid for Cards -->
+        <div class="content-grid">
+            <div class="card">
+                <div class="card-icon">🎨</div>
+                <h3>Creative Design</h3>
+                <p>Build stunning, modern layouts with CSS Grid. Create complex page structures with ease.</p>
+                <a href="#" class="card-link">Learn More →</a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">💻</div>
+                <h3>Clean Code</h3>
+                <p>Write semantic, maintainable code using grid template areas for better organization.</p>
+                <a href="#" class="card-link">Explore →</a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h3>Responsive</h3>
+                <p>Automatically adapts to any screen size. Works perfectly on mobile, tablet, and desktop.</p>
+                <a href="#" class="card-link">See Demo →</a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Performance</h3>
+                <p>Grid layouts are optimized for performance and load faster than traditional methods.</p>
+                <a href="#" class="card-link">Discover →</a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3>Flexible</h3>
+                <p>Easily rearrange layout structure without changing HTML. Perfect for rapid prototyping.</p>
+                <a href="#" class="card-link">Try It →</a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">✨</div>
+                <h3>Modern</h3>
+                <p>Use the latest CSS features supported by all modern browsers for cutting-edge designs.</p>
+                <a href="#" class="card-link">Get Started →</a>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer Area -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p><strong>Built with CSS Grid Template Areas</strong></p>
+            <p>© 2025 MyWebsite. Crafted with ❤️ by Students</p>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview10"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Challenges to Try:</strong>
+                    <ul style="margin: 10px 0 0 20px; line-height: 1.8;">
+                        <li>Change <code>grid-template-columns</code> from <code>repeat(3, 1fr)</code> to <code>repeat(4, 1fr)</code> for 4 columns</li>
+                        <li>Try <code>grid-template-columns: 300px 1fr 200px</code> for fixed and flexible columns</li>
+                        <li>Add more widgets to see how the grid automatically arranges them</li>
+                        <li>Modify <code>grid-template-areas</code> to reorder sections (swap sidebar and main)</li>
+                        <li>Experiment with <code>minmax(200px, 1fr)</code> instead of just <code>1fr</code></li>
+                        <li>Change the <code>gap</code> value to see spacing differences</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- STUDENT PROJECT SECTION -->
+            <div class="section" id="project">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; border-radius: 15px; margin: 20px; text-align: center;">
+                    <h2 style="font-size: 2.5em; margin-bottom: 15px;">Project 2: Student Project</h2>
+                    <h3 style="font-size: 1.8em; margin-bottom: 10px;">"My Hobby Website"</h3>
+                    <p style="font-size: 1.2em; opacity: 0.95;">Create a multi-page website showcasing your hobbies using everything you've learned!</p>
+                </div>
+
+                <!-- Learning Goals -->
+                <div class="info-box">
+                    <h4>Learning Goals</h4>
+                    <p>By the end of this project, you will be able to:</p>
+                    <ul>
+                        <li>Structure a website using multiple HTML pages</li>
+                        <li>Link pages together with navigation</li>
+                        <li>Add text, images, lists, and sections using tables, forms, and multimedia</li>
+                        <li>Use CSS (including Flexbox and Grid) to style your website</li>
+                        <li>Organize content clearly and professionally</li>
+                        <li>Create a responsive design that works on all devices</li>
+                    </ul>
+                </div>
+
+                <!-- Project Requirements -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Project Requirements</h3>
+                        <p>Your website must include all of the following components:</p>
+                    </div>
+                    <div style="padding: 30px;">
+                        <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #667eea;">
+                            <h4 style="color: #667eea; margin-bottom: 15px; font-size: 1.3em;">1. Homepage (index.html)</h4>
+                            <ul style="line-height: 1.8; margin-left: 20px;">
+                                <li>Your name and a welcoming header</li>
+                                <li>A short introduction about yourself (3-5 sentences)</li>
+                                <li>A list of your hobbies</li>
+                                <li>Navigation links to each hobby page</li>
+                                <li>Use Flexbox or Grid for layout</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #764ba2;">
+                            <h4 style="color: #764ba2; margin-bottom: 15px; font-size: 1.3em;">2. Hobby Pages (2-4 pages)</h4>
+                            <p style="margin-bottom: 10px;">For each hobby, create a separate page that includes:</p>
+                            <ul style="line-height: 1.8; margin-left: 20px;">
+                                <li><strong>What the hobby is</strong> - Description and overview</li>
+                                <li><strong>Your experience</strong> - How long you've been doing it</li>
+                                <li><strong>Why you enjoy it</strong> - Personal connection</li>
+                                <li><strong>At least one image</strong> - Photo or illustration</li>
+                                <li><strong>A table</strong> showing equipment, schedule, or achievements</li>
+                                <li><strong>A fun fact or tip</strong> - Share something interesting</li>
+                                <li><strong>Navigation</strong> - Link back to homepage and other hobby pages</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #38b2ac;">
+                            <h4 style="color: #38b2ac; margin-bottom: 15px; font-size: 1.3em;">3. Styling with CSS</h4>
+                            <ul style="line-height: 1.8; margin-left: 20px;">
+                                <li>Choose a consistent color scheme (theme)</li>
+                                <li>Style headings, paragraphs, and links</li>
+                                <li>Make navigation look professional</li>
+                                <li>Use Flexbox or Grid for layout</li>
+                                <li>Add hover effects and transitions</li>
+                                <li>Make it responsive (works on mobile)</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; border-left: 5px solid #f39c12;">
+                            <h4 style="color: #f39c12; margin-bottom: 15px; font-size: 1.3em;">4. Folder Structure</h4>
+                            <pre style="background: #2d3748; color: #fff; padding: 20px; border-radius: 8px; overflow-x: auto; line-height: 1.6;">my-hobby-website/
+│── index.html
+│── hobby1.html
+│── hobby2.html
+│── hobby3.html
+│── style.css
+└── images/
+    │── hobby1.jpg
+    │── hobby2.jpg
+    └── hobby3.jpg</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 1: Homepage -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Template 1: Homepage (index.html)</h3>
+                        <p>Copy this starter template and fill in your own content. Customize the design!</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(11)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor11"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hobby Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa 0%, #fff9c4 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: white;
+            background: #667eea;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        section {
+            padding: 40px 30px;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        p {
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.1em;
+        }
+        
+        .hobbies-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .hobby-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s;
+        }
+        
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .hobby-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Welcome to My Hobby Website</h1>
+        <p>Hello! My name is <strong>[Your Name]</strong>. These are my hobbies:</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="hobby1.html">Hobby 1</a></li>
+            <li><a href="hobby2.html">Hobby 2</a></li>
+            <li><a href="hobby3.html">Hobby 3</a></li>
+        </ul>
+    </nav>
+    
+    <section>
+        <h2>About Me</h2>
+        <p>Write 3–5 sentences about yourself here. What do you enjoy doing? What makes you happy? What are your interests? Share your story!</p>
+        
+        <h2 style="margin-top: 40px;">My Hobbies</h2>
+        <div class="hobbies-list">
+            <div class="hobby-card">
+                <div class="hobby-icon">H1</div>
+                <h3>Hobby 1</h3>
+                <p>Brief description</p>
+            </div>
+            
+            <div class="hobby-card">
+                <div class="hobby-icon">H2</div>
+                <h3>Hobby 2</h3>
+                <p>Brief description</p>
+            </div>
+            
+            <div class="hobby-card">
+                <div class="hobby-icon">H3</div>
+                <h3>Hobby 3</h3>
+                <p>Brief description</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>© 2025 [Your Name] | Created with HTML & CSS</p>
+    </footer>
+</div>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview11"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 2: Hobby Page -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Template 2: Hobby Page (hobby1.html)</h3>
+                        <p>Copy this for each hobby. Include tables for details, images, and interesting content!</p>
+                    </div>
+                    <div class="editor-container">
+                        <div class="editor-panel">
+                            <div class="panel-header">
+                                <span>✏️ HTML/CSS Editor</span>
+                                <button class="run-button" onclick="runCode(12)">▶ Run Code</button>
+                            </div>
+                            <textarea id="editor12"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hobby: [Hobby Name]</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa 0%, #fff9c4 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+        }
+        
+        nav {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: white;
+            background: #667eea;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        nav a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        section {
+            padding: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        p {
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.1em;
+        }
+        
+        img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            margin-top: 15px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 2px solid #667eea;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 1.1em;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .fun-fact {
+            background: #fff9c4;
+            padding: 20px;
+            border-left: 5px solid #f39c12;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .fun-fact strong {
+            color: #f39c12;
+            font-size: 1.2em;
+        }
+        
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>My Hobby: [Hobby Name]</h1>
+    </header>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="hobby1.html">Hobby 1</a>
+        <a href="hobby2.html">Hobby 2</a>
+    </nav>
+    
+    <section>
+        <h2>What is this hobby?</h2>
+        <p>Explain what your hobby is. Give a clear description so anyone can understand it. What makes it interesting?</p>
+    </section>
+    
+    <section>
+        <h2>My Experience</h2>
+        <p>How long have you been doing this hobby? How did you get started? What do you like most about it?</p>
+        
+        <h3 style="color: #764ba2; margin-top: 25px; margin-bottom: 15px;">My Progress</h3>
+        <table>
+            <tr>
+                <th>Year</th>
+                <th>Achievement</th>
+            </tr>
+            <tr>
+                <td>2023</td>
+                <td>Started learning</td>
+            </tr>
+            <tr>
+                <td>2024</td>
+                <td>Reached intermediate level</td>
+            </tr>
+            <tr>
+                <td>2025</td>
+                <td>Achieved [specific goal]</td>
+            </tr>
+        </table>
+    </section>
+    
+    <section>
+        <h2>Picture Gallery</h2>
+        <img src="https://picsum.photos/800/500?random=20" alt="My Hobby">
+        <p style="margin-top: 15px; font-style: italic; color: #666;">Caption: Describe what's in the photo</p>
+    </section>
+    
+    <section>
+        <h2>Equipment / Tools I Use</h2>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Item 1</td>
+                <td>What it's used for</td>
+            </tr>
+            <tr>
+                <td>Item 2</td>
+                <td>What it's used for</td>
+            </tr>
+            <tr>
+                <td>Item 3</td>
+                <td>What it's used for</td>
+            </tr>
+        </table>
+    </section>
+    
+    <section>
+        <h2>Fun Fact or Tip</h2>
+        <div class="fun-fact">
+            <strong>Did you know?</strong>
+            <p style="margin-top: 10px;">Share an interesting fact or helpful tip related to your hobby. This could be something surprising or useful for beginners!</p>
+        </div>
+    </section>
+    
+    <footer>
+        <a href="index.html">Back to Homepage</a>
+    </footer>
+</div>
+
+</body>
+</html></textarea>
+                        </div>
+                        <div class="preview-panel">
+                            <div class="panel-header">
+                                <span>👁️ Preview</span>
+                            </div>
+                            <div class="preview-content" id="preview12"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bonus Extensions -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Bonus Extensions (Optional)</h3>
+                        <p>Want to go above and beyond? Try adding these advanced features!</p>
+                    </div>
+                    <div style="padding: 30px;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                            <div style="background: #e6fffa; padding: 20px; border-radius: 10px; border-left: 5px solid #38b2ac;">
+                                <h4 style="color: #38b2ac; margin-bottom: 10px;">Gallery Page</h4>
+                                <p>Create a dedicated gallery page with multiple images using CSS Grid or Flexbox</p>
+                            </div>
+                            
+                            <div style="background: #fef5e7; padding: 20px; border-radius: 10px; border-left: 5px solid #f39c12;">
+                                <h4 style="color: #f39c12; margin-bottom: 10px;">Video Embed</h4>
+                                <p>Add a YouTube video tutorial or demonstration related to your hobby</p>
+                            </div>
+                            
+                            <div style="background: #f3e5f5; padding: 20px; border-radius: 10px; border-left: 5px solid #9c27b0;">
+                                <h4 style="color: #9c27b0; margin-bottom: 10px;">Goals Page</h4>
+                                <p>Create a "My Goals" page listing future objectives for each hobby</p>
+                            </div>
+                            
+                            <div style="background: #e3f2fd; padding: 20px; border-radius: 10px; border-left: 5px solid #2196f3;">
+                                <h4 style="color: #2196f3; margin-bottom: 10px;">CSS Animations</h4>
+                                <p>Add animations, transitions, and hover effects to make it interactive</p>
+                            </div>
+                            
+                            <div style="background: #fff3e0; padding: 20px; border-radius: 10px; border-left: 5px solid #ff9800;">
+                                <h4 style="color: #ff9800; margin-bottom: 10px;">Dark Mode</h4>
+                                <p>Implement a light/dark theme toggle button</p>
+                            </div>
+                            
+                            <div style="background: #fce4ec; padding: 20px; border-radius: 10px; border-left: 5px solid #e91e63;">
+                                <h4 style="color: #e91e63; margin-bottom: 10px;">Contact Form</h4>
+                                <p>Add a contact/feedback form (design only, no backend needed)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grading Rubric -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <h3>Grading Rubric (20 Points Total)</h3>
+                        <p>How your project will be evaluated</p>
+                    </div>
+                    <div style="padding: 30px; overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; box-shadow: 0 2px 10px rgba(0,0,0,0.1); min-width: 800px;">
+                            <thead>
+                                <tr style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+                                    <th style="padding: 15px; text-align: left; border: 2px solid #764ba2; width: 15%;">Category</th>
+                                    <th style="padding: 15px; text-align: left; border: 2px solid #764ba2; width: 21.25%;">Excellent (4)</th>
+                                    <th style="padding: 15px; text-align: left; border: 2px solid #764ba2; width: 21.25%;">Good (3)</th>
+                                    <th style="padding: 15px; text-align: left; border: 2px solid #764ba2; width: 21.25%;">Developing (2)</th>
+                                    <th style="padding: 15px; text-align: left; border: 2px solid #764ba2; width: 21.25%;">Beginning (1)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background: white;">
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;"><strong>1. Homepage (index.html)</strong></td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Homepage includes name, intro, list of hobbies, and working links. Clear and well-organized.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Missing one small part OR minor layout issues.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Missing 2–3 required items OR confusing structure.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Homepage incomplete or missing.</td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;"><strong>2. Hobby Pages (x3)</strong></td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Each hobby has its own page with full details: description, experience, picture, fun fact, and works well.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Most pages complete; one or two small items missing.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Pages exist but missing several required elements OR poor detail.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Pages missing, mostly empty, or broken links.</td>
+                                </tr>
+                                <tr style="background: white;">
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;"><strong>3. Navigation & Links</strong></td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">All links work correctly. Student uses clear menu or buttons. Site feels easy to move around.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">One broken link OR navigation not fully consistent.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Several broken links OR confusing movement between pages.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Navigation missing or not functional.</td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;"><strong>4. Content Quality & Effort</strong></td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Writing is clear, original, detailed, and shows strong effort. 4–6 sentences per section.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Good effort; some sections a bit short or simple.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Minimal effort; very short writing or copied text.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Hardly any writing; unclear content.</td>
+                                </tr>
+                                <tr style="background: white;">
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;"><strong>5. Design & CSS Styling</strong></td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Excellent styling: good colors, spacing, readable text, neat layout. Shows creativity.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Some styling done; mostly readable. Needs improvement in spacing or color choices.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Very basic styling; difficult to read or bland.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">No CSS or unreadable design.</td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;"><strong>6. Images & Visuals</strong></td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Uses at least 1 image per hobby page, sized correctly and relevant.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Images included but some are low-quality or too large.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Only 1–2 images for whole site OR poor placement.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">No images used.</td>
+                                </tr>
+                                <tr style="background: white;">
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;"><strong>7. Technical Accuracy</strong></td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">HTML and CSS structured well; indentation, tags closed, files named correctly.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Few small errors that don't break the website.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Frequent errors that cause layout problems.</td>
+                                    <td style="padding: 15px; border: 2px solid #e9ecef;">Major errors; website doesn't load correctly.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-top: 30px; border-left: 5px solid #667eea;">
+                            <h4 style="color: #667eea; margin-bottom: 15px; font-size: 1.3em;">Total Score (20 Points)</h4>
+                            <ul style="line-height: 2; font-size: 1.1em; list-style: none; padding: 0;">
+                                <li><strong style="color: #38b2ac;">18–20 = Outstanding</strong></li>
+                                <li><strong style="color: #48bb78;">15–17 = Strong Work</strong></li>
+                                <li><strong style="color: #f39c12;">11–14 = Developing</strong></li>
+                                <li><strong style="color: #e53e3e;">0–10 = Needs Improvement</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips for Success -->
+                <div class="tip-box">
+                    <strong>Tips for Success:</strong>
+                    <ul style="margin: 10px 0 0 20px; line-height: 1.8;">
+                        <li><strong>Plan first:</strong> Sketch your website structure on paper before coding</li>
+                        <li><strong>Start simple:</strong> Get the basic structure working, then add styling</li>
+                        <li><strong>Test often:</strong> Open your HTML files in a browser frequently to check progress</li>
+                        <li><strong>Use comments:</strong> Add HTML/CSS comments to organize your code</li>
+                        <li><strong>Be creative:</strong> Make it personal! This is YOUR hobby website</li>
+                        <li><strong>Ask for help:</strong> Don't hesitate to ask questions if you get stuck</li>
+                        <li><strong>Validate:</strong> Make sure all links work and images load properly</li>
+                    </ul>
+                </div>
+
+                <!-- Submission Instructions -->
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; margin: 20px; text-align: center;">
+                    <h3 style="font-size: 1.8em; margin-bottom: 15px;">Submission Instructions</h3>
+                    <div style="text-align: left; max-width: 800px; margin: 0 auto;">
+                        <ol style="line-height: 2; font-size: 1.1em; margin-left: 20px;">
+                            <li>Create a folder named <code style="background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 5px;">YourName_HobbyWebsite</code></li>
+                            <li>Include all HTML files, CSS file, and images folder</li>
+                            <li>Zip the entire folder</li>
+                            <li>Submit the zip file by the deadline</li>
+                            <li>Include a README.txt file with your name and a brief project description</li>
+                        </ol>
+                        <p style="margin-top: 20px; font-size: 1.1em; text-align: center;"><strong>Due Date:</strong> 2nd December 2025</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -876,7 +2480,7 @@ video, audio {
 
         // Run all examples on page load
         window.addEventListener('load', () => {
-            for (let i = 1; i <= 6; i++) {
+            for (let i = 1; i <= 12; i++) {
                 runCode(i);
             }
         });
